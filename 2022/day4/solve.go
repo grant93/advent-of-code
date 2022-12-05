@@ -31,7 +31,7 @@ func solve(data []string) []int {
 			answers[1]++
 		}
 	}
-	return answers 
+	return answers
 }
 
 /* standard boilerplate */

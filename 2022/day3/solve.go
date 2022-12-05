@@ -7,7 +7,6 @@ import (
 	"unicode"
 )
 
-
 func toInt(char rune) int {
 	if unicode.IsUpper(char) {
 		return int(char) - 64 + 26

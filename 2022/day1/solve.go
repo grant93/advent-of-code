@@ -33,7 +33,7 @@ func solve(data []string) []int {
 	sort.Ints(a)
 	answers[0] = a[len(a)-1]
 	answers[1] = sum(a[len(a)-3 : len(a)])
-	return answers 
+	return answers
 }
 
 /* standard boilerplate */
