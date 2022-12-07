@@ -78,7 +78,7 @@ func solve(data []string) []int {
 			} else if strings.HasPrefix(line[5:], "..") {
 				current = current.root
 			} else {
-				name := line[5:len(line)]
+				name := line[5:]
 				for _, entry := range current.subdirs {
 					if entry.name == name {
 						current = entry
@@ -88,7 +88,7 @@ func solve(data []string) []int {
 			}
 		} else {
 			if strings.HasPrefix(line, "dir") {
-				entry := dir{line[4:len(line)], current, make([]*dir, 0), 0}
+				entry := dir{line[4:], current, make([]*dir, 0), 0}
 				current.subdirs = append(current.subdirs, &entry)
 			} else {
 				tmp := strings.Fields(line)
