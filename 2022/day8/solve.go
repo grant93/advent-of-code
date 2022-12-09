@@ -26,14 +26,13 @@ const (
 	Bottom
 )
 
-
 func partOne(data []string, direction int) int {
 	visible := 0
 	/*						 (x,y)
-		calculate from left: 0,0 -> len, len 	(y=0; y++ outer, x=0; x++ inner
-		calculate from right len, 0 -> 0, len 	(y=0; y++ outer, x=len-1; x-- inner)
-		calculate from top   0, 0, -> len, len 	(x=0; x++ outer, y=0; y++ inner
-		calculate from bottom 0, len -> len, 0 	(x=0; x++ outer, y=len-1; y-- inner)
+	calculate from left: 0,0 -> len, len 	(y=0; y++ outer, x=0; x++ inner
+	calculate from right len, 0 -> 0, len 	(y=0; y++ outer, x=len-1; x-- inner)
+	calculate from top   0, 0, -> len, len 	(x=0; x++ outer, y=0; y++ inner
+	calculate from bottom 0, len -> len, 0 	(x=0; x++ outer, y=len-1; y-- inner)
 
 	*/
 	counterOneMax := 0
@@ -42,7 +41,7 @@ func partOne(data []string, direction int) int {
 	if direction == Top || direction == Bottom {
 		counterOneMax = len(data[0])
 		counterTwoMax = len(data)
-	} else  {
+	} else {
 		counterTwoMax = len(data[0])
 		counterOneMax = len(data)
 	}
@@ -54,7 +53,7 @@ func partOne(data []string, direction int) int {
 
 		if direction == Top || direction == Bottom {
 			x = counter1
-		} else      {
+		} else {
 			y = counter1
 		}
 
@@ -63,7 +62,7 @@ func partOne(data []string, direction int) int {
 				x = counter2
 			} else if direction == Right {
 				x = counterTwoMax - counter2 - 1
-			} else  if direction == Top {
+			} else if direction == Top {
 				y = counter2
 			} else {
 				y = counterTwoMax - counter2 - 1
@@ -76,23 +75,23 @@ func partOne(data []string, direction int) int {
 					visibilityMap[y][x] = rune(data[y][x])
 					visible++
 				}
-				prevHeight = height 
+				prevHeight = height
 			}
-		
+
 		}
 	}
 	//printMap()
 	return visible
 }
 
-func calculateScore(data []string, value int, x int, y int) int{
+func calculateScore(data []string, value int, x int, y int) int {
 	score := 1
 
 	count := 0
 	/* check right */
-	for _x:=x+1; _x < len(data[0]); _x++ {
+	for _x := x + 1; _x < len(data[0]); _x++ {
 		count++
-		if int(data[y][_x] - '0') >= value {
+		if int(data[y][_x]-'0') >= value {
 			break
 		}
 	}
@@ -103,9 +102,9 @@ func calculateScore(data []string, value int, x int, y int) int{
 	}
 
 	/* check left */
-	for _x:=x-1; _x >= 0; _x-- {
+	for _x := x - 1; _x >= 0; _x-- {
 		count++
-		if int(data[y][_x] - '0') >= value {
+		if int(data[y][_x]-'0') >= value {
 			break
 		}
 	}
@@ -116,9 +115,9 @@ func calculateScore(data []string, value int, x int, y int) int{
 	}
 
 	/* check below */
-	for _y:=y+1; _y < len(data); _y++ {
+	for _y := y + 1; _y < len(data); _y++ {
 		count++
-		if int(data[_y][x] - '0') >= value {
+		if int(data[_y][x]-'0') >= value {
 			break
 		}
 	}
@@ -129,9 +128,9 @@ func calculateScore(data []string, value int, x int, y int) int{
 	}
 
 	/* check above */
-	for _y:=y-1; _y >= 0; _y-- {
+	for _y := y - 1; _y >= 0; _y-- {
 		count++
-		if int(data[_y][x] - '0') >= value {
+		if int(data[_y][x]-'0') >= value {
 			break
 		}
 	}
@@ -148,7 +147,7 @@ func partTwo(data []string) int {
 	highScore := 0
 	for y, valY := range data {
 		for x, valX := range valY {
-			score := calculateScore(data, int(valX - '0'), x, y)
+			score := calculateScore(data, int(valX-'0'), x, y)
 			if score > highScore {
 				highScore = score
 			}
@@ -159,12 +158,12 @@ func partTwo(data []string) int {
 
 func solve(data []string) []int {
 	answers := make([]int, 2)
-	visibilityMap = make([][]rune, len(data)) 
+	visibilityMap = make([][]rune, len(data))
 	transformations := []int{Left, Right, Top, Bottom}
 	for i := range visibilityMap {
 		visibilityMap[i] = []rune(strings.Repeat(" ", len(data[0])))
 	}
-    visible := 0
+	visible := 0
 
 	/* "rotate" and check from each direction */
 	for _, dydx := range transformations {
