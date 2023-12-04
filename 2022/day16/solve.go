@@ -42,19 +42,10 @@ func parse(data []string) map[string]Node {
 	return nodes
 }
 
-func partOne(nodes map[string]Node) int {
-	visited = list.New()
-	states = list.New().PushBack(State{1, "AA", 0, 
-	best := 0
-
-	for len(states) > 0 {
-
-	}
-}
-
 
 func solve(data []string) []int {
-	nodes = parse(data)
+	nodes := parse(data)
+	fmt.Println(nodes)
 	answers := make([]int, 2)
 
 	return answers
