@@ -1,4 +1,4 @@
-package daythree 
+package daythree
 
 import (
 	s "github.com/grant93/advent-of-code/lib/set"
@@ -28,10 +28,10 @@ func findCommonTwo(set1 s.Set[rune], set2 s.Set[rune]) rune {
 		return key
 	}
 	panic("uhoh")
-	return rune('a') 
+	return rune('a')
 }
 
-func solve(data []string) (int, int){
+func solve(data []string) (int, int) {
 	partOne := 0
 	partTwo := 0
 	for i, line := range data {
@@ -41,5 +41,5 @@ func solve(data []string) (int, int){
 			partTwo += toInt(findCommonThree(s.CreateWithValues([]rune(data[i])), s.CreateWithValues([]rune(data[i+1])), s.CreateWithValues([]rune(data[i+2]))))
 		}
 	}
-	return partOne, partTwo 
+	return partOne, partTwo
 }

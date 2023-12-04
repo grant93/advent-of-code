@@ -1,4 +1,4 @@
-package dayone 
+package dayone
 
 import (
 	_ "embed"

@@ -1,4 +1,4 @@
-package dayone 
+package dayone
 
 import (
 	"sort"
@@ -13,7 +13,7 @@ func sum(array []int) int {
 	return result
 }
 
-func solve(data []string) (int, int){
+func solve(data []string) (int, int) {
 	var a []int
 	total := 0
 

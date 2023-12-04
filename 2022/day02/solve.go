@@ -1,4 +1,4 @@
-package daytwo 
+package daytwo
 
 type Scores struct {
 	score_us   int
@@ -6,7 +6,7 @@ type Scores struct {
 }
 
 var (
-	scoring =  map[string]Scores{
+	scoring = map[string]Scores{
 		"A X": Scores{4, 4}, // rock->rock draw
 		"B X": Scores{1, 8}, // rock->paper loss
 		"C X": Scores{7, 3}, // rock->scissors win
@@ -30,7 +30,7 @@ var (
 	}
 )
 
-func solve(data []string) (int, int){
+func solve(data []string) (int, int) {
 	partOne := 0
 	partTwo := 0
 
@@ -42,5 +42,5 @@ func solve(data []string) (int, int){
 		partTwo += scores.score_us
 
 	}
-	return partOne, partTwo 
+	return partOne, partTwo
 }

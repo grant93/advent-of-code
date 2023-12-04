@@ -25,7 +25,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw`
 		wantSecond int
 	}{
 		{firstInput, 157, 70},
-		{secondInput[0:len(secondInput)-2], 7903, 2548},
+		{secondInput[0 : len(secondInput)-2], 7903, 2548},
 	}
 	for i, tt := range tests {
 		name := fmt.Sprintf("Test Number %d", i)
