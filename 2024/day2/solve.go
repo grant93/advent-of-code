@@ -1,10 +1,8 @@
 package daytwo
 
 import (
-	"strconv"
-	"strings"
-
-	slice "github.com/grant93/advent-of-code/lib"
+	parse "github.com/grant93/advent-of-code/lib/parse"
+	slice "github.com/grant93/advent-of-code/lib/slice"
 )
 
 func isSafe(report []int64) bool {
@@ -27,15 +25,9 @@ func isSafe(report []int64) bool {
 }
 
 func solve(input []string) (int, int) {
-	nums := [][]int64{}
-	for _, s := range input {
-		parts := strings.Fields(s)
-		tmp := []int64{}
-		for _, i := range parts {
-			a, _ := strconv.ParseInt(i, 10, 64)
-			tmp = append(tmp, a)
-		}
-		nums = append(nums, tmp)
+	nums, err := parse.ParseInt64FromInput(input)
+	if err != nil {
+		panic("failed to parse input!")
 	}
 
 	partOne := 0
